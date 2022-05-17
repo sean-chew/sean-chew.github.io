@@ -53,11 +53,11 @@
                         
                             <p class = "text-primary"> 
                                 <b>Main Research Question: <br></b>To what degree can the presence of green space in neighborhoods predict surface temperatures in NYC? <br><br>
-                                <b>Sub Research Questions: </b>
+                                <b>Sub Research Questions: </b></p>  
                             <ul>
                                 <li>Given the difference in amount of green space across the boroughs, which neighborhoods are particularly vulnerable to the Urban Heat Island Effect?</li>
                                 <li>What are the discrepancies in green coverage between different land uses (e.g. commercial, residential)?</li>
-                            </ul> </p>    
+                            </ul>   
                             
                         <p class = "text-primary">To answer these questions, we extracted raw Landsat data to obtain both heat and vegetation data across New York City. </p>                        
                             <span class="image fit"><img src="images/Cleaning_Process_Pics.png" alt="" /></span>          
@@ -69,61 +69,32 @@
                         
                         
                         <p class = "text-primary">For tax lot analysis, we reclassified MapPLUTO tax lots into 5 broad categories (Residential, Commercial, Industrial, Public, Vacant) and conducted an OLS regression on these land uses to predict LST. </p>
+                            <p style="page-break-before: always;">&nbsp;</p>
+
                         <h2>Results and Implications</h2>
+
                         
+                        <span class="image right"><img src="/images/gif_pp.gif" alt="" /></span>
+                            
+                        <h4>Census Tract Analysis</h4>
                         <p class = "text-primary">Random Forest model returned the highest test and training results The most important demographic feature in our model was non-family households (but feature importance was still less than 10%) We conducted a spatial analysis K Means clustering and Decision Tree. K Means produced 3 clusters while Decision Tree produced 4 categories. </p>
-                        <span class="image fit"><img src="/images/gif_pp.gif" alt="" /></span>
-                        <div class="table-wrapper">
-										<table>
-											<thead>
-												<tr>
-													<th>Indicator Type</th>
-													<th>Question Answered</th>
-													<th>Indicators</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>Socioeconomic indicators</td>
-													<td>Where do people have the means to cope with extreme heat?</td>
-													<td>Median Household Income</td>
-												</tr>
-												<tr>
-													<td>Health Indicators</td>
-													<td>Where are people already struggling?</td>
-													<td>Heat Hospitalization Rate, Asthma Incidence</td>
-												</tr>
-												<tr>
-													<td>Landcover Indicators</td>
-													<td> where does the built environment contribute to extreme heat?</td>
-													<td>Green Landcover, Street Tree Density</td>
-												</tr>
-												<tr>
-													<td>Environmental Indicators</td>
-													<td>VWhere is the air hottest?</td>
-													<td>Summer Daytime Temperature, Ozone Concentration</td>
-												</tr>
-												<tr>
-													<td>Relief Indicators</td>
-													<td>Where do people have access to respite and refuge on hot days?</td>
-													<td>Access to Cool It! NYC Feature, Access to Cool It! NYC Libraries</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-	
                         
-						      </div>
+                        <h4>OLS regression analysis</h4>
+                            <ul>
+                                <li>Neighborhood green space is a relatively weak predictor for LST</li>
+                                <li>“Public land use” is the best predictor for LST on a city-wide scale</li>
+                            </ul>  
+                        
+                        <span class="image fit"><img src="/images/NDVI_LST.png" alt="" /></span>    
+                        
+                            <h2>Conclusions</h2>
+                            <p class = "text-primary">High-LST census tracts, like our Queens case study, can be identified to implement policies such as greening buildings for high-density apartments (such as those catering to non-family households) and heavy commercial land uses.  Further research can consider the limitations of using raw Landsat NDVI data, as we were limited by a few day’s worth of Landsat images per month and even </p>
                             <div class="inner"> 
-                            
-                                <h3>Final Scores</h3>
-                           
                         
-                            <p class = "text-primary">After performing MCDA with the nine heat vulnerability indicators, raster cells of 20x20 feet are assigned total vulnerability scores across the five boroughs. Scores are then averaged and aggregated by census tract to identify which tracts are most vulnerable and if clusters of vulnerable tracts exist. Visually, concentrations of highly heat vulnerable census tracts are apparent in two regions: 1. Upper Manhattan / Bronx, 2. Northeast Brooklyn / Queens The Getis Ord Gi* test of local clustering using a fixed-band distance conceptualization of spatial relationships confirms that the two regions of heat vulnerability were clustered and spatially statistically significant to the 90% confidence interval.</p>
-                             <span class="image fit"><img src="images/Heat_Index_cropped_2.png" alt="" /></span>	
-                            <p class = "text-primary"> Project completed with <a href="https://www.linkedin.com/in/calvinharrison">Calvin Harrison</a> and <a href="https://www.linkedin.com/in/morganreuther?challengeId=AQGQSt524pRf1gAAAYDOwn5go_ieu7-ontAbAHsZ9RoP8ZZygAo4195ERyrhHQVos5wpGimbC0sFlAILLVLuS9T4WRq0bqDk_A&submissionId=57e40426-e7b2-ef16-c5a0-882ddd00e969">Morgan Reuther</a>, for <a href = "https://www.leahmeisterlin.com/"> Leah Meisterlin's </a>  Fall 2019 Geographic Information Systems (GIS) course. </p>
+                           
+                            <p class = "text-primary"> Project completed with <a href="https://www.linkedin.com/in/ya-hsuan-theresa-yang-078838136"> Theresa Yang</a>, <a href="https://www.linkedin.com/in/haoche-hung/">Haoche Hung</a>, and <a href = "https://www.linkedin.com/in/hilary-ho-yy/"> Hilary Ho </a> for <a href = "https://www.linkedin.com/in/boyeong-hong-1b907ab5/"> Boyeong Hong's </a> Spring 2022 Exploring Urban Data with Machine Learning course. </p>
                             
-                        <p class = "text-primary"> To view full report, see <a href="project_pdfs/Report_NYCHAHeatVulnerability_ChewHarrisonReuther.pdf" download> here. </a></p>
+                        <p class = "text-primary"> To view poster, see <a href="project_pdfs/FinalPoster_TemperatureGreen-1.gif" download> here. </a></p>
                             </div>
                             
                         <div>
