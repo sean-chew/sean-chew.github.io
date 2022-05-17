@@ -45,18 +45,36 @@
 				<!-- Main -->
 					<div id="main">
 						<div class="inner">
-							<h1>Heat Vulnerability In NYC</h1>
-							<span class="image main"><img src="images/cooling_center_2.png" alt="" /></span>
+							<h1>Using Machine Learning to Predict Surface Temperature</h1>
                             <h2>Introduction </h2>
-                            <p class = "text-primary">In New York City, intense heatwaves from extreme weather pose a serious threat to communities throughout all five boroughs and cause more deaths each year than all other climate-related hazards combined. The NYC Panel on Climate Change predicts that the number of days per year that the city’s temperature exceeds 90°F will double by 2050. These rising temperatures exacerbate related environmental hazards, such as the urban heat island effect and poor environmental air quality, placing residents and entire neighborhoods at risk. New York City currently utilizes its own Heat Vulnerability Index ( NYC HVI) to detect neighborhood-level variations in heat vulnerability across the city. However, the tool is not refined enough to distinguish variations in the severity of heat burden faced by the city’s most vulnerable populations living in developments owned and operated by the New York City Housing Authority (NYCHA). This analysis provides a targeted HVI for specific use by NYCHA to identify developments where residents are most vulnerable to rising local temperatures and to recommend where the agency’s resources can be most effectively allocated.</p>
+                            <p class = "text-primary">The Urban Heat Island Effect (UHIE) occurs when impervious surfaces replace areas of vegetation, causing increased surface temperatures in cities relative to surrounding areas. Inequitable green space access across NYC may cause some neighborhoods to be more at-risk for UHIE than others.</p>
                             
-                            <h2>Indicators Considered</h2>
+                            <h2>Key Research Questions</h2>
                         
-                            <p class = "text-primary"> The refined HVI for use by NYCHA combines nine indicators of heat vulnerability across five categories. In order to provide a holistic understanding of what makes a neighborhood heat vulnerable, the following five categories were integrated into the final index:</p>    
+                            <p class = "text-primary"> 
+                                <b>Main Research Question: <br></b>To what degree can the presence of green space in neighborhoods predict surface temperatures in NYC? <br><br>
+                                <b>Sub Research Questions: </b>
+                            <ul>
+                                <li>Given the difference in amount of green space across the boroughs, which neighborhoods are particularly vulnerable to the Urban Heat Island Effect?</li>
+                                <li>What are the discrepancies in green coverage between different land uses (e.g. commercial, residential)?</li>
+                            </ul> </p>    
                             
-                                      
-                            
-                            <div class="table-wrapper">
+                        <p class = "text-primary">To answer these questions, we extracted raw Landsat data to obtain both heat and vegetation data across New York City. </p>                        
+                            <span class="image fit"><img src="images/Cleaning_Process_Pics.png" alt="" /></span>          
+                                               
+                        <span class="image left"><img src="images/Methodology.png" alt="" /></span>          
+                        <p class = "text-primary">After cleaning the raw Landsat data, we conducted 2 parallel workflows on different geographical units to conduct our ML analysis: ACS census tracts and MapPLUTO tax lots.  For census tract analysis, we used Lasso and Random Forest models to predict LST with demographic features, and we used K Means and a Decision Tree model to conduct spatial analysis. </p>
+ 
+                        <p class = "text-primary">For census tract analysis, we used Lasso and Random Forest models to predict LST with demographic features, and we used K Means and a Decision Tree model to conduct spatial analysis. </p>
+                        
+                        
+                        <p class = "text-primary">For tax lot analysis, we reclassified MapPLUTO tax lots into 5 broad categories (Residential, Commercial, Industrial, Public, Vacant) and conducted an OLS regression on these land uses to predict LST. </p>
+                        <h2>Results and Implications</h2>
+                        
+                        <p class = "text-primary">Random Forest model returned the highest test and training results
+The most important demographic feature in our model was non-family households (but feature importance was still less than 10%) We conducted a spatial analysis K Means clustering and Decision Tree. K Means produced 3 clusters while Decision Tree produced 4 categories. </p>
+                        <span class="image fit"><img src="https://lh3.googleusercontent.com/keep-bbsk/AGk0z-MImrj_xWQ_J8n7wUyxTDpXsC-YaHaMQ7YBptMIkSPJ5LufEUAgILFzQ2XFlRFpbD9X1Y69McOkLTo0Mdj4ABn7GKp_cXKjpsKRtZ0=s1600" alt="" /></span>
+                        <div class="table-wrapper">
 										<table>
 											<thead>
 												<tr>
@@ -94,13 +112,8 @@
 											</tbody>
 										</table>
 									</div>
-
-
-                            <span class="image left"><img src="images/MCDA.png" alt="" /></span>	
+	
                         
-                            		<h3>Multi Criterion Decision Analysis (MCDA)</h3>
-                            <p class = "text-secondary"> When all nine indicators across
-                            the five categories are combined for the final HVI score, layers are weighted to reflect the relative impact each category has on vulnerability. Because socioeconomic status provides the most ability to escape heat vulnerability, and because there is only one indicator within this category, the median income layer was weighted by four. The layers for health, landcover, and environmental indicators were each counted only once, meaning that socioeconomic status had twice the impact of each of those other categories. Finally, each of the two relief indicators were weighted by 0.5, reflecting the fact that having access to refuge outside of one’s home can help, but still leaves a person vulnerable. By weighting access to Cool It! NYC features and libraries each by 0.5, relief indicators had only half the impact of health, landcover, and environmental indicators. </p>  
 						      </div>
                             <div class="inner"> 
                             
@@ -109,7 +122,7 @@
                         
                             <p class = "text-primary">After performing MCDA with the nine heat vulnerability indicators, raster cells of 20x20 feet are assigned total vulnerability scores across the five boroughs. Scores are then averaged and aggregated by census tract to identify which tracts are most vulnerable and if clusters of vulnerable tracts exist. Visually, concentrations of highly heat vulnerable census tracts are apparent in two regions: 1. Upper Manhattan / Bronx, 2. Northeast Brooklyn / Queens The Getis Ord Gi* test of local clustering using a fixed-band distance conceptualization of spatial relationships confirms that the two regions of heat vulnerability were clustered and spatially statistically significant to the 90% confidence interval.</p>
                              <span class="image fit"><img src="images/Heat_Index_cropped_2.png" alt="" /></span>	
-                            <p class = "text-primary"> Project completed with <a href="https://www.linkedin.com/in/calvinharrison">Calvin Harrison</a> and <a href="https://www.linkedin.com/in/morganreuther?challengeId=AQGQSt524pRf1gAAAYDOwn5go_ieu7-ontAbAHsZ9RoP8ZZygAo4195ERyrhHQVos5wpGimbC0sFlAILLVLuS9T4WRq0bqDk_A&submissionId=57e40426-e7b2-ef16-c5a0-882ddd00e969">Morgan Reuther</a>, for <a href = "https://www.leahmeisterlin.com/"> Leah Meisterlin's </a>  Fall 2021 Geographic Information Systems (GIS) course. </p>
+                            <p class = "text-primary"> Project completed with <a href="https://www.linkedin.com/in/calvinharrison">Calvin Harrison</a> and <a href="https://www.linkedin.com/in/morganreuther?challengeId=AQGQSt524pRf1gAAAYDOwn5go_ieu7-ontAbAHsZ9RoP8ZZygAo4195ERyrhHQVos5wpGimbC0sFlAILLVLuS9T4WRq0bqDk_A&submissionId=57e40426-e7b2-ef16-c5a0-882ddd00e969">Morgan Reuther</a>, for <a href = "https://www.leahmeisterlin.com/"> Leah Meisterlin's </a>  Fall 2019 Geographic Information Systems (GIS) course. </p>
                             
                         <p class = "text-primary"> To view full report, see <a href="project_pdfs/Report_NYCHAHeatVulnerability_ChewHarrisonReuther.pdf" download> here. </a></p>
                             </div>

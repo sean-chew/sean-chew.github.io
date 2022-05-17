@@ -2707,15 +2707,16 @@ input, select, textarea {
 					}
 
 			.tiles article.style1 > .image:before {
-				background-color: #f2849e;
+				background-color: #A5A692;
+                opacity: 0.50;
 			}
 
 			.tiles article.style2 > .image:before {
-				background-color: #7ecaf6;
+				background-color: #45C4B0;
 			}
 
 			.tiles article.style3 > .image:before {
-				background-color: #7bd0c1;
+				background-color: #45C4B0;
 			}
 
 			.tiles article.style4 > .image:before {
