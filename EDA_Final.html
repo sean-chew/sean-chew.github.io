@@ -12,7 +12,7 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
-	<body class="is-preload" style="background-color:whitesmoke">>
+	<body class="is-preload" style="background-color:white">
 		<!-- Wrapper -->
 			<div id="wrapper">
 
@@ -38,16 +38,95 @@
 							<span class="image right"><img src="images/flooding_overtime.gif" alt="" /></span>
                             
                             <p style="page-break-before: always;">&nbsp;</p>
-                            <h2>Introduction </h2>
-                            <p class = "text-primary"> Text to come soon.</p>
+                            <h2>Problem Statement </h2>
+                            <p class = "text-primary"> When Hurricane Ida struck New York City in 2021, eleven people drowned after their illegal basement apartments flooded. Illegal basement units are a large and growing problem across the city, where more than 100,000 such units are estimated to exist. These units are overwhelmingly concentrated in BIPOC, low-income, and immigrant communities, per a Pratt Center analysis. </p>
+
+                                <h4>Questions: </h4>
+                            <ol>
+                                <li>Where are illegal basement units concentrated in New York City? </li>
+                                <li>How does the distribution of illegal basement units interact with flood risk?</li>
+                            </ol>  
+                            
                             
                             <h2>Exploratory Data Analysis</h2>
                             
-                            <p class = "text-primary"> Stay tuned!
+                            <p class = "text-primary"> Basements that are above grade can be considered more likely to be legal residences,as these units are more easily capable of complying with DOB regulations for basement units (eg.light, airflow, drainage). Basements that are below grade and full size (ie. at least 75% of the floor area of the first floor) can be assumed to be the most likely candidates for illegal basement units.These units are large enough to provide ample space for a residential unit, but are more prone to flooding due to sitting below street level. For the purposes of this project, we will assume that buildings with full, below grade basements are candidates for illegal units. This is a rough assumption that likely oversimplifies the reality,but given the lack of clear data, this model will allow us to narrow down our study somewhat in hopes of identifying the most at-risk data. Given this assumption, there are 456,804 buildings across the five boroughs that could potentially contain illegal basement apartments.
                             </p>
+
+                            <div class="table-wrapper">
+										<table>
+											<thead>
+												<tr>
+													<th>Basement Grade</th>
+													<th>Basement Size</th>
+													<th># Units</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Above Grade</td>
+													<td>Full</td>
+													<td>146,815</td>
+												</tr>
+												<tr>
+													<td>Above Grade</td>
+													<td>Partial</td>
+													<td>1,535</td>
+												</tr>
+												<tr>
+													<td><b>Below Grade</b></td>
+													<td><b>Full</b></td>
+													<td><b>456,804</b></td>
+												</tr>
+												<tr>
+													<td>Below Grade</td>
+													<td>Partial</td>
+													<td>4,728</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+                            
+<div class="slideshow-container">
+
+  <!-- Full-width images with number and caption text -->
+  <div class="mySlides fade">
+    <div class="numbertext">1 / 3</div>
+    <img src="images/bldgs_possible_illeg_basemts_n.png" style="width:100%">
+    
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext">2 / 3</div>
+    <img src="images/bldgs_possible_illegal.png" style="width:100%">
+    
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext">3 / 3</div>
+    <img src="/images/bldgs_possible_illegal_ct.png" style="width:100%">
+    
+  </div>
+
+
+  <!-- Next and previous buttons -->
+  <a class="prevgrey" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="nextgrey" onclick="plusSlides(1)">&#10095;</a>
+</div>
+                            
+<br>
+
+                            
+<!-- The dots/circles -->
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span>
+  <span class="dot" onclick="currentSlide(2)"></span>
+  <span class="dot" onclick="currentSlide(3)"></span>
+</div>
                             
                             <p class = "text-primary"> Project completed with <a href="https://www.linkedin.com/in/erikstrand2/"> Erik Strand</a> and <a href = "https://www.linkedin.com/in/tamim-abedin-816545123/"> Tamim Abedin </a> for <a href = "https://www.arch.columbia.edu/faculty/301-peter-marcotullio"> Peter Marcotullio</a> and <a href = "https://www.linkedin.com/in/kazukisakamoto/"> Kaz Sakamoto's </a> Fall 2021 Environmental Data Analysis course. </p>
-                            </div>
+                            <p class = "text-primary"> Thumbnail credit: Michael Appleton</p>
+                        </div>
                             
                         <div>
                         
@@ -74,6 +153,7 @@
 					</footer>
 
 			</div>
+                
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
