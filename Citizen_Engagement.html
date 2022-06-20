@@ -35,29 +35,103 @@
 					<div id="main">
 						<div class="inner">
 							<h1>Citizen Engagement via NYC 311 Complaints</h1>
-							<span class="image right"><img src="images/Ida.gif" alt="" /></span>
-                            
-                            <p style="page-break-before: always;">&nbsp;</p>
+
                             <h2>Introduction </h2>
                             <p class = "text-primary">As an older coastal city, New York faces imminent threats from climate change including flooding from sea level rise and storms, increasing heat vulnerability, and deteriorating air quality. Simultaneously, many citizens of New York experience threats unequally - often those at highest risk are low income, immigrant populations with fewer resources to advocate for needed policy and infrastructure interventions. NYC311 is the City’s platform allowing the government to respond to requests for non-emergency services, which provides New Yorkers an avenue to request action ranging from pest control to maintenance of city infrastructure. As climate change continues to accelerate, it is likely that the scope of complaints 311 oversees will increasingly expand to include those relating to environmental risks. Concurrently, there is an increasing interest in e-governance and civic engagement platforms to promote equitable inclusive policy making. This research will investigate the usage of 311 as a civic engagement platform to advocate for policy and infrastructure changes in light of climate change. Specifically, this study will investigate how equitably New York’s 311 services has served its citizens by determining how reporting rates in neighborhoods with higher environmental risks differ from those in lower risk neighborhoods. Using big data and machine learning techniques, this research will investigate 311 complaints, flood maps, air quality information, and building  information to inform policy recommendations. The goal is to promote a more equitable implementation of citizen engagement in light of climate change.</p>
                             
                             <h2>Exploratory Data Analysis</h2>
                             <ol>
                             
-                            <li><p class = "text-primary"> The first step was to investigate which 311 complaints were most important by agency. This was done by pulling 311 complaints through the NYC Open Data API, then analyzing complaints by agency, over the years.  You can see a deeper dive of that analysis <a href="Data_Exploration.html">here.</a></p>    </li>
+                            <li><p class = "text-primary"> The first step was to investigate which 311 complaints were most important by agency. This was done by pulling 311 complaints through the NYC Open Data API, then analyzing all complaint types by agency, over the years, analyzing their text descriptions, and describing their geographic distribution.  You can see a deeper dive of that analysis </p>    </li>
                             
-                              <li><p class = "text-primary"> Then, an NGram Analysis was completed to see which complaints were most common in each category. <a href="N_Gram.html">here.</a></p>    </li>
-                                <li><p class = "text-primary"> With the information gathered, the next step was to investigate how complaints changed after a stress test. We investigated events occuring during Sandy and Ida. You can see that analysis <a href="Ida_Sandy.html">here.</a></p>  
-                              <li><p class = "text-primary"> Then, an NGram Analysis was completed to see which complaints were most common in each category. <a href="Data_Exploration.html">here.</a></p>    </li>
-                                <li><p class = "text-primary"> With the information gathered, the next step was to investigate how complaints changed after a stress test. We investigated events occuring during Sandy and Ida. You can see that analysis <a href="Data_Exploration.html">here.</a></p>  
-                                </li>
+                                <h3>Time Series Analysis of DEP 311 Complaints:</h3>                                
+                            <div class="slideshow-container">
+
+                              <!-- Full-width images with number and caption text -->
+                              <div class="mySlides fade">
+                                <div class="numbertext">1 / 2</div>
+                                <img src="images/dep_filtered_monthly_plot_line_volume.jpg" style="width:100%">
+
+                              </div>
+
+                              <div class="mySlides fade">
+                                <div class="numbertext">2 / 2</div>
+                                <img src="images/dep_monthly_plot_perc.jpg" style="width:100%">
+
+                              </div>
+
+
+
+                              <!-- Next and previous buttons -->
+                              <a class="prevgrey" onclick="plusSlides(-1)">&#10094;</a>
+                              <a class="nextgrey" onclick="plusSlides(1)">&#10095;</a>
+                            </div>
+
+                            <br>
+
+
+                            <!-- The dots/circles -->
+                            <div style="text-align:center">
+                              <span class="dot" onclick="currentSlide(1)"></span>
+                              <span class="dot" onclick="currentSlide(2)"></span>
+                            </div>
+                                
+                            <h3>Ngram Analysis</h3>
+                                <p>Text analysis was used to determine what are typical words used depending on the type of complaint. For air quality and sewer complaints became the best candidates for further analysis: </p>
+                                <div class="box alt">
+										<div class="row gtr-uniform">
+											<div class="col-6"><span class="image fit"><img src="images/Air%20Quality_ngrams.png" alt="" /></span></div>
+											<div class="col-6"><span class="image fit"><img src="images/Sewer_ngrams.png" alt="" /></span></div>
+									</div>
+                                </div>                                
+                            
+                                
+                            <h3>Geospatial Analysis:</h3>
+                                
+                                <p>Another useful step was to determine where these complaints were distributed across the five boroughs, both in terms of the raw number of complaints and also normalized by population of the census tract. </p>
+                                
+                            <h4>Number of Complaints by Census Tract</h4>
+                                <div class="box alt">
+										<div class="row gtr-uniform">
+											<div class="col-6"><span class="image fit"><img src="images/Air%20Quality.png" alt="" /></span></div>
+											<div class="col-6"><span class="image fit"><img src="images/Sewer.png" alt="" /></span></div>
+
+									</div>
+                                </div>
+                                    <br>
+                                    
+                                    <h4>Number of Complaints Per Capita by Census Tract</h4>
+                                <div class="box alt">
+								<div class="row gtr-uniform">
+											<div class="col-6"><span class="image fit"><img src="images/Air%20Quality_perCapita.png" alt="" /></span></div>
+											<div class="col-6"><span class="image fit"><img src="images/Sewer_perCapita.png" alt="" /></span></div>
+
+									</div>
+                                    </div>
+                                
+                                <li><p class = "text-primary"> With the information gathered, the next step was to investigate how complaints changed after a stress test. We investigated events occuring during Sandy and Ida. </p>
+                                    
+                                    <h3>Sandy Complaints</h3>
+                                    
+                                    <div class="row gtr-uniform">
+                                    <div class = "col-7"><span class="image fit"><img src="/images/Sandy_complaints.png" alt="" /></span></div>
+                                        <div class = "col-5"><span class="image fit"><img src="images/sandy.gif" alt="" /></span></div>
+                                    </div>
+                                    <h3>Ida Complaints</h3>
+                                                                        <div class="row gtr-uniform">
+                                    <div class = "col-7"><span class="image fit"><img src="/images/IDA_complaints.png" alt="" /></span></div>
+                                        <div class = "col-5"><span class="image fit"><img src="images/Ida.gif" alt="" /></span></div>
+                                    </div>
+
+                            <p style="page-break-before: always;">&nbsp;</p>
+
 
                             </ol>
 
                             
-                            <p class = "text-primary"> This research is ongoing, to be presented at the 2022 ACSP conference in Toronto. Stay tuned!
+                            <p class = "text-primary"> This research is ongoing, to be presented at the 2022 ACSP conference in Toronto. Stay tuned.
                             </p>
-                            
+                            <p>You can view the code for the <a href="Data_Exploration.html">exploratory data analysis</a>, <a href="N_Gram.html">NGram Analysis</a>, or <a href="Ida_Sandy.html">extreme weather analysis</a> if interested!</p>
                             <p class = "text-primary"> Project undertaken with guidance of professor <a href = "https://www.linkedin.com/in/boyeong-hong-1b907ab5/"> Boyeong Hong </a>. </p>
                             </div>
                             
