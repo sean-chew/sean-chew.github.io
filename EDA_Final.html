@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Citizen Engagement</title>
+		<title></title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -41,14 +41,17 @@
                             <h2>Problem Statement </h2>
                             <p class = "text-primary"> When Hurricane Ida struck New York City in 2021, eleven people drowned after their basement apartments flooded. Informal basement units are a large and growing problem across the city, where more than 100,000 such units are estimated to exist. These units are overwhelmingly concentrated in BIPOC, low-income, and immigrant communities, per a Pratt Center analysis. </p>
 
-                                <h4>Questions: </h4>
+                            
+                            <b>Skills Used:</b>
+                            <p> R (dplyr, tidyr, sf, ggplot), Project Management, Presentation </p> 
+                            <h4>Questions: </h4>
                             <ol>
                                 <li>Where are informal basement units concentrated in New York City? </li>
                                 <li>How does the distribution of informal basement units interact with flood risk?</li>
                             </ol>  
                             
-                            
-                            <h2>Exploratory Data Analysis</h2>
+                
+                            <h2>Estimating Informal Basements</h2>
                             
                             <p class = "text-primary"> Basements that are above grade can be considered more likely to be legal residences,as these units are more easily capable of complying with DOB regulations for basement units (eg.light, airflow, drainage). Basements that are below grade and full size (ie. at least 75% of the floor area of the first floor) can be assumed to be the most likely candidates for informal basement units.These units are large enough to provide ample space for a residential unit, but are more prone to flooding due to sitting below street level. For the purposes of this project, we will assume that buildings with full, below grade basements are candidates for informal units. This is a rough assumption that likely oversimplifies the reality,but given the lack of clear data, this model will allow us to narrow down our study somewhat in hopes of identifying the most at-risk data. Given this assumption, there are 456,804 buildings across the five boroughs that could potentially contain informal basement apartments.
                             </p>
@@ -85,47 +88,149 @@
 												</tr>
 											</tbody>
 										</table>
-									</div>
+                            </div>
                             
-<div class="slideshow-container">
+                            <div class="slideshow-container">
 
-  <!-- Full-width images with number and caption text -->
-  <div class="mySlides fade">
-    <div class="numbertext">1 / 3</div>
-    <img src="images/bldgs_possible_illeg_basemts_n.png" style="width:100%">
-    
-  </div>
+                              <!-- Full-width images with number and caption text -->
+                              <div class="mySlides fade">
+                                <div class="numbertext">1 / 3</div>
+                                <img src="images/bldgs_possible_illeg_basemts_n.png" style="width:100%">
 
-  <div class="mySlides fade">
-    <div class="numbertext">2 / 3</div>
-    <img src="images/bldgs_possible_illegal.png" style="width:100%">
-    
-  </div>
+                              </div>
 
-  <div class="mySlides fade">
-    <div class="numbertext">3 / 3</div>
-    <img src="/images/bldgs_possible_illegal_ct.png" style="width:100%">
-    
-  </div>
+                              <div class="mySlides fade">
+                                <div class="numbertext">2 / 3</div>
+                                <img src="images/bldgs_possible_illegal.png" style="width:100%">
+
+                              </div>
+
+                              <div class="mySlides fade">
+                                <div class="numbertext">3 / 3</div>
+                                <img src="/images/bldgs_possible_illegal_ct.png" style="width:100%">
+
+                              </div>
 
 
-  <!-- Next and previous buttons -->
-  <a class="prevgrey" onclick="plusSlides(-1)">&#10094;</a>
-  <a class="nextgrey" onclick="plusSlides(1)">&#10095;</a>
-</div>
+                              <!-- Next and previous buttons -->
+                              <a class="prevgrey" onclick="plusSlides(-1)">&#10094;</a>
+                              <a class="nextgrey" onclick="plusSlides(1)">&#10095;</a>
+                            </div>
+
+                            <br>
+
+
+                            <!-- The dots/circles -->
+                            <div style="text-align:center">
+                              <span class="dot" onclick="currentSlide(1)"></span>
+                              <span class="dot" onclick="currentSlide(2)"></span>
+                              <span class="dot" onclick="currentSlide(3)"></span>
+                            </div>
                             
-<br>
+                            <h2>Quantifying Informal Basement Apartment Risk</h2>
+                            
+                            
+                            <p>Data from the US Census Bureau was pulled in order to quantify vulnerability. We calculated the percent of census tract that were noted as immigrants, percentages of non-white residents, and income levels across the five boroughs. </p>
 
+                            <div class="box alt">
+                                <div class="row gtr-uniform">
+                                            <div class="col-4"><span class="image fit"><img src="images/immigrant.png" alt="" /></span></div>
+                                            <div class="col-4"><span class="image fit"><img src="images/minority.png" alt="" /></span></div>
+                                            <div class="col-4"><span class="image fit"><img src="images/income.png" alt="" /></span></div>
+
+                                </div>
+                            </div>
                             
-<!-- The dots/circles -->
-<div style="text-align:center">
-  <span class="dot" onclick="currentSlide(1)"></span>
-  <span class="dot" onclick="currentSlide(2)"></span>
-  <span class="dot" onclick="currentSlide(3)"></span>
-</div>
+                            <h2>Final Vulnerability Scores</h2>
+
+                            <p>Finally, using all vulnerability layers and risk projections, we conducted a Multi-Criterion Decision Analysis (MCDA) to determine final scores for each densus tract. A maximum of 6 and minimum of 1 was assigned to each layer, with highest scores appearing in bright yellow.</p>
+                             
+                            <img src="images/MCDA_2.png" style="width:70%" class = "center">
+                            <p>The majority of census tracts with particularly vulnerable communities are in Queens. Therefore, we recommend resources be allocated to these particular census tracts, particularly in events of extreme flood.</p>
                             
+                            <div class="table-wrapper">
+										<table>
+											<thead>
+												<tr>
+													<th>Census Tract, Borough</th>
+													<th>NTA Name</th>
+													<th>Immigrant Vulnerability</th>
+                                                    <th>Income Vulnerability</th>
+                                                    <th>Minority Vulnerability</th>
+                                                    <th>Informal Apartments in Floodplain</th>
+                                                    <th>Final Score</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Tract 454, Queens</td>
+                                                    <td>Briarwood-Jamaica Hills</td>
+													<td>6</td>
+													<td>5</td>
+													<td>6</td>
+													<td>5</td>                                                    
+													<td>22</td>                                                          
+												</tr>
+												<tr>
+													<td>Tract 479, Queens</td>                                                    
+													<td>Elmhurst-Maspeth</td>
+													<td>6</td>
+													<td>5</td>
+													<td>5</td>
+													<td>6</td>                                                    
+													<td>22</td>                                                                                                              
+												</tr>
+												<tr>
+													<td>Tract 869, Queens</td>                                                    													
+                                                    <td>Flushing</td>
+													<td>6</td>
+													<td>6</td>
+													<td>6</td>
+													<td>4</td>
+                                                    <td>22</td>                                                          
+												</tr>
+												<tr>
+													<td>Tract 254, Queens</td>                                                    													
+                                                    <td>South Jamaica</td>
+													<td>4</td>
+													<td>6</td>
+													<td>6</td>                                                    
+													<td>6</td>                                                                                                        
+													<td>22</td>                                                                                                              
+                                                    
+												</tr>
+                                                <tr>
+													<td>Tract 470, Queens</td>                                                    													
+                                                    <td>Jamaica</td>
+													<td>6</td>
+													<td>4</td>
+													<td>6</td>                                                    
+													<td>6</td>
+													<td>22</td>                                                          
+												</tr>
+                                                <tr>
+													<td>Tract 104, Brooklyn</td>                                                    													
+                                                    <td>Sunset Park East</td>
+													<td>6</td>
+													<td>6</td>
+                                                    <td>6</td>
+													<td>3</td>                                                                                                              
+													<td>21</td>                                                          
+													<td></td>                                                                                                        
+												</tr>
+											</tbody>
+										</table>
+                            </div>
+                            
+
+                        
                             <p class = "text-primary"> Project completed with <a href="https://www.linkedin.com/in/erikstrand2/"> Erik Strand</a> and <a href = "https://www.linkedin.com/in/tamim-abedin-816545123/"> Tamim Abedin </a> for <a href = "https://www.arch.columbia.edu/faculty/301-peter-marcotullio"> Peter Marcotullio</a> and <a href = "https://www.linkedin.com/in/kazukisakamoto/"> Kaz Sakamoto's </a> Fall 2021 Environmental Data Analysis course. </p>
+                            
+
+
+                            
                             <p class = "text-primary"> Thumbnail credit: Michael Appleton</p>
+                            
                         </div>
                             
                         <div>
