@@ -117,14 +117,14 @@ d3.select("#button2020").on("click",function(){
 					   })*/
 	
 
-	function drawTypeBarChart(dataset,className){
+function drawTypeBarChart(dataset,className){
 	//set where the bars start to draw 
 	var g = svg.append("g")
 		 .attr("transform", "translate(" + 265 + "," + -8 + ")")
 		 //here i am adding 2 class names - the year and the chart group's general name for reference
          .attr("class", className+" typeCharts")
 
-	function drawTypeCount(dataset,className1){
+function drawTypeCount(dataset,className1){
 	//set where the text starts to draw 
 	var g = svg.append("g")
       	 .attr("x", function(d,i) { return xScale(d.n) + 270; })
@@ -132,7 +132,7 @@ d3.select("#button2020").on("click",function(){
 	     .attr("class", className1+" typeCount")
 		}
 
-	function drawTypeChange(dataset,className){
+function drawTypeChange(dataset,className){
 	//draw a new separate chart here for the change
 	var g = svg.append("g")
 		 .attr("transform", "translate(" + 200 + "," + -8 + ")")
@@ -155,8 +155,18 @@ g.selectAll(".Bars")
 	 })
      .attr("y", function(d,i) { return yScale(i) - 200; }) 
      .attr("height", 8)
-	 .attr("fill", "#C0DCF1"); 
-	 //if 
+	 //.attr("fill", "#C0DCF1")
+	 .style("fill", function(d){
+		if(d.n == 9773) {return "#FF5900"}
+		else if (d.n == 9559) {return "#FF5900"}
+		else {return "#C0DCF1"}
+		;})
+
+		/*.style("fill", function(d) {            // <== Add these
+            if (d.close <= 400) {return "red"}  // <== Add these
+            else  
+			}else if(d%3==0){
+                    return "blue"  { return "black" }*/
 
  svg.selectAll(".Counts")
      .data(dataset)
