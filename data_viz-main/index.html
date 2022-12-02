@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Vacant Storefronts</title>
+	<!-- <script type="text/javascript" src="./d3.js"></script> -->
+	<script src="https://d3js.org/d3.v7.min.js"></script>
+	<link href="https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.css" rel="stylesheet">
+	<script src="https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.js"></script>
+	<link rel="stylesheet" href="./style.css">
+
+</head>
+
+
+<body>
+	<div class="container">
+		<section class="title-container">
+			<div id="title">
+				<h2>Vacant Storefronts</h2>
+			</div>
+			<!-- <div id="subhead">Subhead text subhead text subhead text subhead text subhead text.</div> -->
+			<div class="mask">
+			</div>
+		</section>
+		<section>
+			<br><br>
+			<div id="byline">By Sean Chew, Haoche Hung, & Varisa Tanti</div>
+		</section>
+		<section class="chart-container">
+			<div class="chart-title">
+				<h2>Types of Storefronts</h2>
+			</div>
+			<p>After the breakout of the COVID-19 pandemic, the NYC Department of Finance began collecting datapoints on
+				the 75,000 storefronts found across the city. The dataset, which covers just the following two years of
+				the pandemic, captures the types of occupied storefronts, as well as the number of vacant storefronts,
+				labeled as "No business activity identified."</p>
+			<div class="buttons">
+				<button id="button2019" class="year-button" reporting_year="2019 and 2020">2020</button>
+				<button id="button2020" class="year-button" reporting_year="2020 and 2021">2021</button>
+				<!-- <button id="buttonChange" class="year-button" reporting_year="change">Change</button> -->
+			</div>
+			<div id="chart1"></div>
+		</section>
+		<section class="chart-container">
+			<div class="chart-title">
+				<h2>Vacancy Rate vs. Land Price</h2>
+			</div>
+			<p>This scatterplot aims to explore the correlation between storefront vacancy rates and unit land
+				prices of the buildings in each NTA region. Since land value can be a good indicator of how wealthy a
+				neighborhood is, comparing vacancy rates with the median land price can suggest
+				whether the storefronts in less wealthy neighborhoods experience more vacancies than
+				wealthier neighborhoods during the pandemic.<br><br>
+
+				<i>The size of the circle indicates the number of the storefronts in each NTA. You can click through
+					each borough to see how each compares to the rest of New York. You can also hover over each circle
+					for details. </i>
+			</p>
+			<div class="buttons">
+				<button class="boro-btn" id="overall">All Borough</button>
+				<button class="boro-btn" id="manhattan" data-index="1">manhattan</button>
+				<button class="boro-btn" id="bronx" data-index="2">bronx</button>
+				<button class="boro-btn" id="brooklyn" data-index="3">brooklyn</button>
+				<button class="boro-btn" id="queens" data-index="4">queens</button>
+			</div>
+			<div id="scatterplot"></div>
+		</section>
+
+		<section class="chart-container">
+			<div class="chart-title">
+				<h2>Vacancies Across New York City Neighborhoods</h2>
+			</div>
+			<p>As COVID-19 battered New York City in 2019, neighborhoods experienced changes in storefront vacancies
+				that varied greatly by geographic location.
+				Once popular tourist destinations, neighborhoods like Hudson Yards and Midtown experienced a sharp
+				decline in business activity that was well documented.
+				Other neighborhoods, like Flushing and Astoria in Queens, experienced severe increases in vacancies
+				while receiving less attention. <br><br>
+
+				<i>Feel free to explore the distribution of vacancies in 2020, 2021, and the change from one versus the
+					other. Zoom into the neighborhoods to
+					identify vacant storefronts, and click to obtain additional information.</i>
+			</p>
+			<div class="buttons">
+				<button class="year_button" id="yr2020">2020</button>
+				<button class="year_button" id="yr2021">2021</button>
+				<button class="year_button" id="yrChange">Change</button>
+			</div>
+
+			<div class="buttons">
+				<button class="neighbor_button" id="astoria">Astoria</button>
+				<button class="neighbor_button" id="flushing">Flushing</button>
+			</div>
+
+			<div id="map"></div>
+
+		</section>
+		<section class="chart-container">
+			<div class="chart-title">
+				<h2>Reported vacancies vs. Lived Experiences</h2>
+			</div>
+			<p>Open data from the City confirms that neighborhoods such as Astoria were hit particularly hard. However,
+				because only what is reported is displayed,
+				it’s important to understand how reported data matches lived experiences on the ground. The next step in
+				our investigation will be to conduct site visits
+				to Astoria, particularly on Steinway St, to see how reported data matches the lived experience on the
+				ground.</p>
+			<div id="img"></div>
+			<p>Stay tuned for those results!</p>
+		</section>
+	</div>
+	<script type="text/javascript" src="mapboxmap.js"></script>
+	<script type="text/javascript" src="barchart_count.js"></script>
+	<script type="text/javascript" src="scatterplot.js"></script>
+
+
+
+	<script>
+		Promise.all([d3.csv("data/storefronts_count_yr.csv"), d3.csv("data/storefront_MapPluto_NTA.csv"), d3.csv("data/time_scale_data.csv")])
+			.then(function (data) {
+				scatterPlot(data[1])
+				barChart_count(data[0])
+
+			})
+	</script>
+
+
+</body>
+
+</html>

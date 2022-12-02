@@ -1,0 +1,120 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 780px;
+    background-image: url(./cover.jpg);
+    color: white;
+}
+
+.mask {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 20%;
+}
+
+#title {
+    font-weight: 600;
+    font-size: 90px;
+    font-family:  monospace;
+}
+
+#byline {
+    font-style: italic;
+    font-weight: 300;
+    font-size: 14px;
+    color: black;
+    font-family: monospace;
+}
+
+#img {
+    border: 1px solid transparent;
+    width: 100%;
+    background-image: url(./Astoria_Vacancy2.png);
+    width: 800px;
+    height: 600px;
+    object-fit: contain;
+}
+
+.chart-container {
+    border: 1px solid transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+    width: 100%;
+}
+
+.chart-container p {
+    width: 700px;
+    text-align: center;
+    line-height: 27px;   /* within paragraph */
+    /* padding-bottom:15px */
+    /* margin-bottom: 30px; between paragraphs */
+    font-family: monospace;
+}
+
+
+.chart-title {
+    margin-bottom: 5px;
+    font-family: monospace;
+
+}
+
+#year-button {
+    display: flex;
+    gap: 20px;
+    font-family: monospace;
+}
+#year-button:focus{
+    background:#F5B84E;
+}
+
+
+
+button {
+    margin: 15px 0;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    font-family: monospace;
+}
+button:focus{
+    background:#F5B84E;
+    opacity: 0.8;
+}
+
+#map {
+    width: 800px;
+    height: 600px
+}
+
+
+.tooltip{
+    position: absolute;
+    padding: 10px;
+    background-color: rgba(67, 67, 67, 0.975);
+    color: white;
+    visibility: hidden;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-family: monospace;
+}
